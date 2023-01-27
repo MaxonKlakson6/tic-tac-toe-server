@@ -12,7 +12,7 @@ app.use(cors());
 const server = http.createServer(app);
 const webSocketServer = new Server(server, {
   cors: {
-    origin: "https://profound-heliotrope-ce544e.netlify.app",
+    origin: "https://celebrated-beijinho-ed9d2b.netlify.app",
   },
 });
 
