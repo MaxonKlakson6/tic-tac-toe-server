@@ -12,17 +12,13 @@ app.use(cors());
 const server = http.createServer(app);
 const webSocketServer = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://profound-heliotrope-ce544e.netlify.app",
   },
 });
 
 const onSocketConnection = (socket) => {
   roomsHandler(socket, webSocketServer);
   gameRoomHandler(socket, webSocketServer);
-
-  socket.on("disconnect", () => {
-    console.log("disc " + socket.id);
-  });
 };
 
 server.listen(5000, () => {

@@ -34,7 +34,17 @@ class RoomsRepository {
       room.users.push(userInRoom);
       webSocketServer.emit("take-rooms", this.rooms);
       socket.emit("user-joined", room.id);
+      webSocketServer.in(room.id).emit("update-room", room);
     }
+  }
+
+  deleteRoom(webSocketServer, indexOfRoom) {
+    if (indexOfRoom < 0) {
+      return;
+    }
+
+    this.rooms.splice(indexOfRoom, 1);
+    webSocketServer.emit("take-rooms", this.rooms);
   }
 }
 
